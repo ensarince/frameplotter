@@ -8,7 +8,8 @@ from os import listdir
 import matplotlib.image as mpimg
 from matplotlib import pylab as pl
 import numpy as np
-
+from natsort import os_sorted
+import math
 
 path = "./frames"
 outpath = './outframes'
@@ -16,22 +17,8 @@ outpath = './outframes'
 fig = pyplot.figure()
 axis = fig.add_subplot(1, 1, 1, projection="3d") # 3D plot with scalar values in each axis
 
-""" for f in os.listdir(path):
-    if f.endswith(".jpg"):
-        #image = Image.open(path + '/' + f).convert('L')
-        print(f)
-        im = Image.open(os.path.join(path, f))
-        r, g, b = list(im.getdata(0)), list(im.getdata(1)), list(im.getdata(2))
-        axis.scatter(r, g, b, c="#BB000E", marker="o")
-        axis.set_xlabel("Red")
-        axis.set_ylabel("Green")
-        axis.set_zlabel("Blue")
-        #pyplot.show()
-        save_name = os.path.join(outpath, os.path.basename(f)+'.jpg')
-        pyplot.savefig(save_name) """
 
-
-for f in os.listdir(path):
+for f in os_sorted(os.listdir(path)):
     if f.endswith(".jpg"):
         #image = Image.open(path + '/' + f).convert('L')
         print(f)
@@ -51,21 +38,3 @@ for f in os.listdir(path):
         #pl.show()
         save_name = os.path.join(outpath, os.path.basename(f)+'.jpg')
         pyplot.savefig(save_name)
-
-
-
-
-
-""" image_path = "D:\Hard(D)\DERSLER\AoS\image-visuzalizer\deep-music-visualizer\ezgif-frame-010.jpg"
-fig = pyplot.figure()
-axis = fig.add_subplot(1, 1, 1, projection="3d") # 3D plot with scalar values in each axis
-im = Image.open(image_path)
-r, g, b = list(im.getdata(0)), list(im.getdata(1)), list(im.getdata(2))
-axis.scatter(r, g, b, c="#BB000E", marker="o")
-axis.set_xlabel("Red")
-axis.set_ylabel("Green")
-axis.set_zlabel("Blue")
-#pyplot.show()
-pyplot.savefig('books_read.jpg') """
-
-
